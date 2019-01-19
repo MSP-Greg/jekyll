@@ -93,7 +93,7 @@ class TestCommandsServe < JekyllUnitTest
     end
 
     should "serve livereload.js over HTTP on the default LiveReload port" do
-      skip_if_windows "EventMachine support on Windows is limited"
+#      skip_if_windows "EventMachine support on Windows is limited"
       opts = serve(@standard_options)
       content = @client.get_content(
         "http://#{opts["host"]}:#{opts["livereload_port"]}/livereload.js"
@@ -102,7 +102,7 @@ class TestCommandsServe < JekyllUnitTest
     end
 
     should "serve nothing else over HTTP on the default LiveReload port" do
-      skip_if_windows "EventMachine support on Windows is limited"
+#      skip_if_windows "EventMachine support on Windows is limited"
       opts = serve(@standard_options)
       res = @client.get("http://#{opts["host"]}:#{opts["livereload_port"]}/")
       assert_equal(400, res.status_code)
@@ -110,7 +110,7 @@ class TestCommandsServe < JekyllUnitTest
     end
 
     should "insert the LiveReload script tags" do
-      skip_if_windows "EventMachine support on Windows is limited"
+#      skip_if_windows "EventMachine support on Windows is limited"
       opts = serve(@standard_options)
       content = @client.get_content(
         "http://#{opts["host"]}:#{opts["port"]}/#{opts["baseurl"]}/hello.html"
@@ -123,7 +123,7 @@ class TestCommandsServe < JekyllUnitTest
     end
 
     should "apply the max and min delay options" do
-      skip_if_windows "EventMachine support on Windows is limited"
+#      skip_if_windows "EventMachine support on Windows is limited"
       opts = serve(@standard_options.merge(
                      "livereload_max_delay" => "1066",
                      "livereload_min_delay" => "3"
