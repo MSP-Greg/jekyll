@@ -16,6 +16,10 @@ environment:
   matrix:
     - RUBY_FOLDER_VER: 26-x64
       TEST_SUITE: test
+    - RUBY_FOLDER_VER: 26-x64
+      TEST_SUITE: "cucumber"
+    - RUBY_FOLDER_VER: 26-x64
+      TEST_SUITE: "default-site"
     - RUBY_FOLDER_VER: 25-x64
       TEST_SUITE: test
     - RUBY_FOLDER_VER: 24-x64
@@ -61,12 +65,7 @@ test_script:
   - bash ./script/cibuild
 
 after_test:
-  - ps: |
-      Write-Host
-      ruby --version
-      Write-Host RubyGems version $(gem --version)
-      bundler version
-      Write-Host
+  - ps: ruby --version ; Write-Host RubyGems version $(gem --version) ; bundler version ; Write-Host
 
 cache:
   # If one of the files after the right arrow changes, cache will be invalidated
